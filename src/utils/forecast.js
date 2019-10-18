@@ -15,19 +15,20 @@ const forecast = (latitude, longitude, callback) => {
 
 		const currently = body.currently
 		const todayForecast = body.daily.data[0]
-		console.log(todayForecast)
 		callback(
 			undefined,
 			todayForecast.summary +
 				' It is currently ' +
 				currently.temperature +
-				' degrees out. There is a ' +
+				' degrees out. ' +
+				'This high today is ' +
+				todayForecast.temperatureHigh +
+				' with a low of ' +
+				todayForecast.temperatureLow +
+				'. ' +
+				'There is a ' +
 				currently.precipProbability +
-				'% change of rain.' +
-				'\nMinimum temperature: ' +
-				todayForecast.temperatureMin +
-				'\nMaximum temperature: ' +
-				todayForecast.temperatureMax
+				'% change of rain.'
 		)
 	})
 }
